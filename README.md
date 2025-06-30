@@ -157,7 +157,6 @@ $response = $chain->call($messages, [
 
 #### Code Examples
 
-1. [Albert API (French Sovereign AI)](examples/albert/chat.php)
 1. [Anthropic's Claude](examples/anthropic/chat.php)
 1. [OpenAI's GPT with Azure](examples/azure/chat-gpt.php)
 1. [OpenAI's GPT](examples/openai/chat.php)
@@ -168,6 +167,7 @@ $response = $chain->call($messages, [
 1. [Google's Gemini with Google](examples/google/chat.php)
 1. [Google's Gemini with OpenRouter](examples/openrouter/chat-gemini.php)
 1. [Mistral's Mistral with Mistral](examples/mistral/chat-mistral.php)
+1. [Albert API (French Sovereign AI)](examples/albert/chat.php)
 
 ### Tools
 
