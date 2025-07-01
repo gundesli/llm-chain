@@ -10,12 +10,12 @@ use PhpLlm\LlmChain\Platform\Message\MessageBag;
 
 require_once dirname(__DIR__).'/../vendor/autoload.php';
 
-if (!isset($_ENV['ALBERT_API_KEY'])) {
+if (empty($_ENV['ALBERT_API_KEY'])) {
     echo 'Please set the ALBERT_API_KEY environment variable.'.\PHP_EOL;
     exit(1);
 }
 
-if (!isset($_ENV['ALBERT_API_URL'])) {
+if (empty($_ENV['ALBERT_API_URL'])) {
     echo 'Please set the ALBERT_API_URL environment variable (e.g., https://your-albert-instance.com).'.\PHP_EOL;
     exit(1);
 }
