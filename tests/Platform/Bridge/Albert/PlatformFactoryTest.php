@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PhpLlm\LlmChain\Tests\Platform\Bridge\Albert;
 
 use PhpLlm\LlmChain\Platform\Bridge\Albert\PlatformFactory;
-use PhpLlm\LlmChain\Platform\Bridge\OpenAI\Platform;
+use PhpLlm\LlmChain\Platform\Platform;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Small;
 use PHPUnit\Framework\Attributes\Test;
