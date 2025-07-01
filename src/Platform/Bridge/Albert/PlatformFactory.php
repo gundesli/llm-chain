@@ -10,21 +10,26 @@ use PhpLlm\LlmChain\Platform\Contract;
 use PhpLlm\LlmChain\Platform\Platform;
 use Symfony\Component\HttpClient\EventSourceHttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Webmozart\Assert\Assert;
 
 final class PlatformFactory
 {
-    /**
-     * Creates a Platform instance for Albert API (OpenAI-compatible).
-     */
     public static function create(
         string $apiKey,
         string $albertUrl,
         ?HttpClientInterface $httpClient = null,
     ): Platform {
+        Assert::startsWith($albertUrl, 'https://', 'The Albert URL must start with "https://".');
+
         $httpClient = $httpClient instanceof EventSourceHttpClient ? $httpClient : new EventSourceHttpClient($httpClient);
 
-        // Configure base URL for Albert API
-        $baseUrl = rtrim($albertUrl, '/').'/v1/';
+        // The base URL should include the full path to the API endpoint
+        // Albert API expects the URL to end with /v1/
+        $baseUrl = rtrim($albertUrl, '/');
+        if (!str_ends_with($baseUrl, '/v1')) {
+            $baseUrl .= '/v1';
+        }
+        $baseUrl .= '/';
 
         // Create Albert-specific model clients with custom base URL
         $gptClient = new GPTModelClient($httpClient, $apiKey, $baseUrl);

@@ -12,9 +12,6 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * GPT Model Client for Albert API (OpenAI-compatible).
- */
 final readonly class GPTModelClient implements ModelClientInterface
 {
     private EventSourceHttpClient $httpClient;

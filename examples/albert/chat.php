@@ -10,30 +10,24 @@ use PhpLlm\LlmChain\Platform\Message\MessageBag;
 
 require_once dirname(__DIR__).'/../vendor/autoload.php';
 
-$albertApiKey = $_ENV['ALBERT_API_KEY'] ?? null;
-$albertApiUrl = $_ENV['ALBERT_API_URL'] ?? null;
-
-if (empty($albertApiKey)) {
+if (!isset($_ENV['ALBERT_API_KEY'])) {
     echo 'Please set the ALBERT_API_KEY environment variable.'.\PHP_EOL;
     exit(1);
 }
 
-if (empty($albertApiUrl)) {
+if (!isset($_ENV['ALBERT_API_URL'])) {
     echo 'Please set the ALBERT_API_URL environment variable (e.g., https://your-albert-instance.com).'.\PHP_EOL;
     exit(1);
 }
 
-// Create platform instance for Albert API
 $platform = PlatformFactory::create(
-    apiKey: $albertApiKey,
-    albertUrl: $albertApiUrl,
+    apiKey: $_ENV['ALBERT_API_KEY'],
+    albertUrl: $_ENV['ALBERT_API_URL'],
 );
 
 $model = new GPT('gpt-4o');
 $chain = new Chain($platform, $model);
 
-// Albert API supports RAG out of the box
-// You can pass document context as part of your messages
 $documentContext = <<<'CONTEXT'
     Document: AI Strategy of France
 

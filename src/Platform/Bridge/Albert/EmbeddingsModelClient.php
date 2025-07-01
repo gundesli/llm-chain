@@ -11,9 +11,6 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * Embeddings Model Client for Albert API (OpenAI-compatible).
- */
 final readonly class EmbeddingsModelClient implements ModelClientInterface
 {
     public function __construct(
