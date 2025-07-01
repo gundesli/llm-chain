@@ -10,7 +10,6 @@ use PhpLlm\LlmChain\Platform\Message\MessageBag;
 
 require_once dirname(__DIR__).'/../vendor/autoload.php';
 
-// Albert API configuration
 $albertApiKey = $_ENV['ALBERT_API_KEY'] ?? null;
 $albertApiUrl = $_ENV['ALBERT_API_URL'] ?? null;
 
